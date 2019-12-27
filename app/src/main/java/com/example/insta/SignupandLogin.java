@@ -3,6 +3,7 @@ package com.example.insta;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,6 +60,8 @@ public class SignupandLogin extends AppCompatActivity {
                     public void done(ParseUser user, ParseException e) {
                         if(user != null && e == null){
                             Toast.makeText(SignupandLogin.this,user.get("username") + "is Logged in successfully", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(SignupandLogin.this, Welcome.class);
+                            startActivity(intent);
                         }else {
                             Toast.makeText(SignupandLogin.this,e.getMessage(),Toast.LENGTH_LONG).show();
                         }
