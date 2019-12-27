@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Insta</string>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Change the following strings as required -->
+    <string name="back4app_app_id">UY7WhFbFbpwsi785omtU0DuhQ7qn3Y5Y4mKEh5ca</string>
+    <string name="back4app_client_key">kAPGO1SnszGRhxTc4bHc9vZOfoaFyUiK9IjhmUhC</string>
+</resources>
