@@ -28,8 +28,8 @@
         android:ems="10"
         android:hint="Please enter an email"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#000000"
+        android:textColor="#000000"
+        android:textColorHint="#52131212"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -42,7 +42,8 @@
         android:ems="10"
         android:hint="Please enter an username"
         android:inputType="textPersonName"
-        android:textColorHint="#000000"
+        android:textColor="#000000"
+        android:textColorHint="#52131212"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
@@ -55,7 +56,8 @@
         android:ems="10"
         android:hint="Please enter a  password"
         android:inputType="textPassword"
-        android:textColorHint="#000000"
+        android:textColor="#000000"
+        android:textColorHint="#52131212"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUser" />

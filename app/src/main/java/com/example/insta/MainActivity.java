@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLog.setOnClickListener(MainActivity.this);
         // token session logout (Logout the current user for next user to Sign up)
         if (ParseUser.getCurrentUser() != null){
-          ParseUser.getCurrentUser().logOut();
+           //ParseUser.getCurrentUser().logOut();
+             transitionToSocialMediaActivity();
         }
     }
     @Override
@@ -80,9 +81,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void done(ParseException e) {
                         if(e == null){
                             FancyToast.makeText(MainActivity.this,txtUser.getText().toString() + " you signed up successfully",FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
+                            // Calling method so that user can switch to social media activity
+                            transitionToSocialMediaActivity();
                         }else {
                             FancyToast.makeText(MainActivity.this,e.getMessage(),FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();
                         }
+                        txtEmail.getText().clear();
+                        txtUser.getText().clear();
+                        txtPsd.getText().clear();
                         progressDialog.dismiss();
                     }
                 });
@@ -95,6 +101,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             break;
         }
+    }
+    private void transitionToSocialMediaActivity(){
+        Intent intent = new Intent(MainActivity.this, SocialMediaActivity.class);
+        startActivity(intent);
     }
 }
 
