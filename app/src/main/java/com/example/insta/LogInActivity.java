@@ -34,7 +34,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         btnSignUp.setOnClickListener(LogInActivity.this);
 
         if (ParseUser.getCurrentUser() != null){
-            // ParseUser.getCurrentUser().logOut();
+             //ParseUser.getCurrentUser().logOut();
             transitionToSocialMediaActivity();
         }
     }

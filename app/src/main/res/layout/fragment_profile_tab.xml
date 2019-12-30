@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileTab">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <EditText
+        android:id="@+id/edtProfile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/custom_edit"
+        android:drawableLeft="@drawable/profile24dp"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="Please enter a profile name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtBio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/custom_edit"
+        android:drawableLeft="@drawable/bio24dp"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="Please enter your bio"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtProfile" />
+
+    <EditText
+        android:id="@+id/edtProfession"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/custom_edit"
+        android:drawableLeft="@drawable/profession24dp"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="Please enter your profession"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtBio" />
+
+    <EditText
+        android:id="@+id/edtHobby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/custom_edit"
+        android:drawableLeft="@drawable/hobby24dp"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="Please enter your hobbies"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/edtProfession"
+        tools:layout_editor_absoluteX="115dp" />
+
+    <EditText
+        android:id="@+id/edtSport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/custom_edit"
+        android:drawableLeft="@drawable/sports24dp"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="Please enter your favorite sports"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/edtHobby"
+        tools:layout_editor_absoluteX="126dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@drawable/custom_button3"
+        android:textColor="#ccdb39"
+        android:text="Update Info!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtSport" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
