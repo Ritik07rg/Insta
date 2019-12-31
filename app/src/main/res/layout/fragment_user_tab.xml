@@ -6,12 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".UserTab">
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <TextView
+        android:id="@+id/loadingData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading data!  Please wait!"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>

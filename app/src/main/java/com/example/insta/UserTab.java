@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -18,6 +19,7 @@ import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 /**
@@ -41,6 +43,7 @@ public class UserTab extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user_tab, container, false);
         listView = view.findViewById(R.id.listView);
+        final TextView loadingData = view.findViewById(R.id.loadingData);
         // Initialize array
         arrayList = new ArrayList();
         arrayAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,arrayList);
@@ -56,6 +59,10 @@ public class UserTab extends Fragment {
                             arrayList.add(user.getUsername());
                         }
                         listView.setAdapter(arrayAdapter);
+                        loadingData.animate().alpha(0).setDuration(2000);
+                        listView.setVisibility(View.VISIBLE);
+
+
                     }
                 }
             }
