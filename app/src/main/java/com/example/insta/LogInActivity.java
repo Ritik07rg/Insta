@@ -57,11 +57,13 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
              });
              break;
          case R.id.btnSignUp:
+             Intent intent = new Intent(LogInActivity.this,MainActivity.class);
              break;
      }
     }
     private void  transitionToSocialMediaActivity(){
         Intent intent = new Intent(LogInActivity.this, SocialMediaActivity.class);
         startActivity(intent);
+        finish();
     }
 }

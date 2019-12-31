@@ -3,6 +3,7 @@ package com.example.insta;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -26,6 +27,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
+import com.shashank.sony.fancytoastlib.FancyToast;
+
+import java.io.ByteArrayOutputStream;
 
 
 /**
@@ -35,6 +46,7 @@ public class SharePictureTab extends Fragment implements View.OnClickListener{
     private ImageView imgShare;
     private EditText imgDes;
     private Button btnShare;
+    Bitmap receivedImageBitmap;
 
 
     public SharePictureTab() {
@@ -76,6 +88,39 @@ public class SharePictureTab extends Fragment implements View.OnClickListener{
                }
                break;
            case R.id.btnShare:
+               // 5th
+               // Saving an image to the server
+               if (receivedImageBitmap != null){
+
+                   if (imgDes.getText().toString().equals("")){
+                       FancyToast.makeText(getContext(),"Please specify a description", FancyToast.LENGTH_SHORT,FancyToast.INFO,true).show();
+                   }else{
+                       ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                       receivedImageBitmap.compress(Bitmap.CompressFormat.PNG,100,byteArrayOutputStream);
+                       byte[] bytes = byteArrayOutputStream.toByteArray();
+                       ParseFile parseFile = new ParseFile("img.png",bytes);
+                       ParseObject parseObject = new ParseObject("Photo");
+                       parseObject.put("picture",parseFile);
+                       parseObject.put("image_des",imgDes.getText().toString());
+                       parseObject.put("username", ParseUser.getCurrentUser().getUsername());
+                       final ProgressDialog progressDialog = new ProgressDialog(getContext());
+                       progressDialog.setMessage("Uploading Image!");
+                       progressDialog.show();
+                       parseObject.saveInBackground(new SaveCallback() {
+                           @Override
+                           public void done(ParseException e) {
+                               if (e == null ){
+                                   FancyToast.makeText(getContext(),"Image uploaded successfully!", FancyToast.LENGTH_SHORT,FancyToast.SUCCESS,true).show();
+                               }else {
+                                   FancyToast.makeText(getContext(),e.getMessage(), FancyToast.LENGTH_SHORT,FancyToast.ERROR,true).show();
+                               }
+                               progressDialog.dismiss();
+                           }
+                       });
+                   }
+               }else{
+                   FancyToast.makeText(getContext(),"Please select an image!", FancyToast.LENGTH_SHORT,FancyToast.INFO,true).show();
+               }
 
                break;
        }
@@ -112,16 +157,16 @@ public class SharePictureTab extends Fragment implements View.OnClickListener{
             if (resultCode == Activity.RESULT_OK)
             try {
                 Uri selectedImage = data.getData();
-                String[] filePathColoum = {MediaStore.Images.Media.DATA};
-                Cursor cursor = getActivity().getContentResolver().query(selectedImage,filePathColoum,null,null,null);
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                Cursor cursor = getActivity().getContentResolver().query(selectedImage,filePathColumn,null,null,null);
                 cursor.moveToFirst();
-                int columnIndex = cursor.getColumnIndex(filePathColoum[0]);
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 String picturePath = cursor.getString(columnIndex);
                 cursor.close();
-                Bitmap receivedImageBitmap = BitmapFactory.decodeFile(picturePath);
+                receivedImageBitmap = BitmapFactory.decodeFile(picturePath);
                 imgShare.setImageBitmap(receivedImageBitmap);
             }catch (Exception e ){
-                e.getStackTrace();
+                e.printStackTrace();
             }
         }
     }

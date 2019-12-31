@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtEmail = findViewById(R.id.txtEmail);
         txtUser = findViewById(R.id.txtUser);
         txtPsd = findViewById(R.id.txtPsd);
-        // Setting Key Event for signup
+        // Feature to signup directly from keyboard instead of signup button
         txtPsd.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int keyCode, KeyEvent event) {
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnSign.setOnClickListener(MainActivity.this);
         btnLog.setOnClickListener(MainActivity.this);
-        // token session logout (Logout the current user for next user to Sign up)
+        // token session logout
         if (ParseUser.getCurrentUser() != null){
            //ParseUser.getCurrentUser().logOut();
              transitionToSocialMediaActivity();
@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void transitionToSocialMediaActivity(){
         Intent intent = new Intent(MainActivity.this, SocialMediaActivity.class);
         startActivity(intent);
+        finish();
     }
 }
 
