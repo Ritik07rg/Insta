@@ -1,6 +1,7 @@
 package com.example.insta;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,9 +27,9 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UserTab extends Fragment {
+public class UserTab extends Fragment implements AdapterView.OnItemClickListener {
     private ListView listView;
-    private ArrayList arrayList;
+    private ArrayList<String> arrayList;
     // ArrayAdapter for displaying the data
     private ArrayAdapter arrayAdapter;
 
@@ -47,6 +49,7 @@ public class UserTab extends Fragment {
         // Initialize array
         arrayList = new ArrayList();
         arrayAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,arrayList);
+        listView.setOnItemClickListener(UserTab.this);
         ParseQuery<ParseUser> parseQuery = ParseUser.getQuery();
         // condition for not including the current user in the list
         parseQuery.whereNotEqualTo("username", ParseUser.getCurrentUser().getUsername());
@@ -73,4 +76,10 @@ public class UserTab extends Fragment {
 
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(getContext(), UsersPosts.class);
+        intent.putExtra("username",arrayList.get(position));
+        startActivity(intent);
+    }
 }
